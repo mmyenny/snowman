@@ -1,16 +1,39 @@
 import React, { Component } from 'react'
+import snowman_step_0 from './images/step_0.png'
+import snowman_step_1 from './images/step_1.png'
+import snowman_step_2 from './images/step_2.png'
+import snowman_step_3 from './images/step_3.png'
+import snowman_step_4 from './images/step_4.png'
+import snowman_step_5 from './images/step_5.png'
+import snowman_step_6 from './images/step_6.png'
 import snowman_step_7 from './images/step_7.png'
+import words from './words.json'
 import './App.css'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
+    let randomIndex = Math.floor(Math.random() * 1024)
+
+    this.snowmen = [
+      snowman_step_0,
+      snowman_step_1,
+      snowman_step_2,
+      snowman_step_3,
+      snowman_step_4,
+      snowman_step_5,
+      snowman_step_6,
+      snowman_step_7
+    ]
+
     this.state = {
-      secretWord: 'snowman',
+      secretWord: words[randomIndex],
+
       // what state variable will we add to keep track of the letters chosen?
       lettersChosen: []
     }
+    console.log(words[randomIndex])
   }
 
   shouldShowLetter = letter => {
@@ -27,8 +50,28 @@ class App extends Component {
   }
 
   letterClicked = event => {
+    if (this.state.lettersChosen.includes(event.target.value)) {
+      return
+    }
+
     console.log('clicked')
-    this.state.lettersChosen.push(event.target.value)
+    let newLettersChosen = this.state.lettersChosen
+
+    newLettersChosen.push(event.target.value)
+
+    // Tell react that the state has changed
+    this.setState({
+      lettersChosen: newLettersChosen
+    })
+  }
+
+  // return the snowman to show
+  whichSnowman = () => {
+    if (this.state.lettersChosen.length > 7) {
+      return this.snowmen[7]
+    } else {
+      return this.snowmen[this.state.lettersChosen.length]
+    }
   }
 
   render() {
@@ -36,16 +79,11 @@ class App extends Component {
       <div className="App">
         <h1>Do you want to build a Snowman?</h1>
 
-        <img src={snowman_step_7} alt="snowman" />
+        <img src={this.whichSnowman()} alt="snowman" />
         <ul>
-          <li>{}</li>
-          <li>{this.shouldShowLetter('s')}</li>
-          <li>{this.shouldShowLetter('n')}</li>
-          <li>{this.shouldShowLetter('o')}</li>
-          <li>{this.shouldShowLetter('w')}</li>
-          <li>{this.shouldShowLetter('m')}</li>
-          <li>{this.shouldShowLetter('a')}</li>
-          <li>{this.shouldShowLetter('n')}</li>
+          {this.state.secretWord.split('').map(letter => {
+            return <li>{this.shouldShowLetter(letter)}</li>
+          })}
         </ul>
 
         <div className="Alphabet">

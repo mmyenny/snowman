@@ -26,6 +26,11 @@ class App extends Component {
     return '_'
   }
 
+  letterClicked = event => {
+    console.log('clicked')
+    this.state.lettersChosen.push(event.target.value)
+  }
+
   render() {
     return (
       <div className="App">
@@ -44,32 +49,84 @@ class App extends Component {
         </ul>
 
         <div className="Alphabet">
-          <button>A</button>
-          <button>B</button>
-          <button>C</button>
-          <button>D</button>
-          <button>E</button>
-          <button>F</button>
-          <button>G</button>
-          <button>H</button>
-          <button>I</button>
-          <button>J</button>
-          <button>K</button>
-          <button>L</button>
-          <button>M</button>
-          <button>N</button>
-          <button>O</button>
-          <button>P</button>
-          <button>Q</button>
-          <button>R</button>
-          <button>S</button>
-          <button>T</button>
-          <button>U</button>
-          <button>V</button>
-          <button>W</button>
-          <button>X</button>
-          <button>Y</button>
-          <button>Z</button>
+          <button value="a" onClick={this.letterClicked}>
+            A
+          </button>
+          <button value="b" onClick={this.letterClicked}>
+            B
+          </button>
+          <button value="c" onClick={this.letterClicked}>
+            C
+          </button>
+          <button value="d" onClick={this.letterClicked}>
+            D
+          </button>
+          <button value="e" onClick={this.letterClicked}>
+            E
+          </button>
+          <button value="f" onClick={this.letterClicked}>
+            F
+          </button>
+          <button value="g" onClick={this.letterClicked}>
+            G
+          </button>
+          <button value="h" onClick={this.letterClicked}>
+            H
+          </button>
+          <button value="i" onClick={this.letterClicked}>
+            I
+          </button>
+          <button value="j" onClick={this.letterClicked}>
+            J
+          </button>
+          <button value="k" onClick={this.letterClicked}>
+            K
+          </button>
+          <button value="l" onClick={this.letterClicked}>
+            L
+          </button>
+          <button value="m" onClick={this.letterClicked}>
+            M
+          </button>
+          <button value="n" onClick={this.letterClicked}>
+            N
+          </button>
+          <button value="o" onClick={this.letterClicked}>
+            O
+          </button>
+          <button value="p" onClick={this.letterClicked}>
+            P
+          </button>
+          <button value="q" onClick={this.letterClicked}>
+            Q
+          </button>
+          <button value="r" onClick={this.letterClicked}>
+            R
+          </button>
+          <button value="s" onClick={this.letterClicked}>
+            S
+          </button>
+          <button value="t" onClick={this.letterClicked}>
+            T
+          </button>
+          <button value="u" onClick={this.letterClicked}>
+            U
+          </button>
+          <button value="v" onClick={this.letterClicked}>
+            V
+          </button>
+          <button value="w" onClick={this.letterClicked}>
+            W
+          </button>
+          <button value="x" onClick={this.letterClicked}>
+            X
+          </button>
+          <button value="y" onClick={this.letterClicked}>
+            Y
+          </button>
+          <button value="z" onClick={this.letterClicked}>
+            Z
+          </button>
         </div>
       </div>
     )
